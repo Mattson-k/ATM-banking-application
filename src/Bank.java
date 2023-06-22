@@ -9,6 +9,19 @@ public class Bank {
 
     private ArrayList<Account> accounts;
 
+    /**
+     * create new bank object   with empty lists of users and accounts
+     * @param name
+     */
+    public Bank (String name){
+
+        this.name=name;
+        this.users= new ArrayList<User>();
+        this.accounts = new ArrayList<Account>();
+
+    }
+
+
     public String getNewUserUUID() {
 
         // generate a new uuid for a user
@@ -71,9 +84,8 @@ public class Bank {
          }
 
 
-    public void addAccount(Account anAcct) {
-        this.accounts.add(anAcct);
-    }
+
+
 
 
     /**
@@ -85,9 +97,8 @@ public class Bank {
      */
 
 
-
     public User addUser(String FirstName,String LastName,String pin){
-        //create user object and add it to your list
+        //create a new user object and add it to your list
         User newUser=new User(FirstName,LastName,pin,this);
         this.users.add(newUser);
 
@@ -107,7 +118,7 @@ public class Bank {
         // search through list of users
 
         for (User u :this.users){
-            // check user ID is correct
+            // check if user ID is correct
             if(u.getUUID().compareTo(userID) ==0 && u.validatePin(pin)){
             return u;
             }
@@ -115,11 +126,13 @@ public class Bank {
 
         }
 
-     // if we havent found the user   or have incoreect pin
+     // if we have not found the user   or have incorrect pin
         return null;
     }
 
 
+    public void addAccount(Account newAccount) {
 
+    }
 
 }
