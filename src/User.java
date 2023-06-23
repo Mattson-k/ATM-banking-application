@@ -37,7 +37,7 @@ private ArrayList<Account> accounts; //list of accounts for this user
     this.accounts=new ArrayList<Account>();
 
     // print log message
-    System.out.printf("new user %s, %s with ID %s created. \n", LastName,FirstName,this.uuid);
+    System.out.printf("New user %s, %s with ID %s created. \n", LastName,FirstName,this.uuid);
 
 
 
@@ -64,6 +64,36 @@ private ArrayList<Account> accounts; //list of accounts for this user
     }
 
       return  false;
+  }
+
+
+
+  public String getFirstName(){
+    return this.FirstName;
+
+  }
+
+  /**
+   *   print summaries for the accounts of this user
+   */
+
+  public  void printAccountsSummary () {
+        System.out.printf("\n\n%s's accounts summary", this.FirstName);
+         for (int a=0;a< this.accounts.size();a++){
+           System.out.printf("%d) %s\n",a+1,this.accounts.get(a).getSummaryLine());
+
+         }
+           System.out.println();
+  }
+
+  public  int numAccounts(){
+    return this.accounts.size();
+
+  }
+
+  public void printAcctHistory(int acctIdx){
+      this.accounts.get(acctIdx).printTransHistory();
+    
   }
 
 }

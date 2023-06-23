@@ -32,11 +32,35 @@ public class Transaction {
 
 
 
-
-
-
-
      }
 
+    /**
+     * get the amount of the transaction
+     * @return the amount
+     */
+      public double getAmount(){
+           return this.amount;
+      }
 
-}
+    /**
+     *      get a string summarising the transaction
+     * @return    string summary
+     */
+
+      public String getSummaryLine() {
+          if (this.amount >= 0) {
+              return String.format("%s : shs%.0f : %s", this.timestamp.toString(), this.amount, this.memo);
+
+
+          }
+
+          else {
+              return String.format("%s : shs(%.0f) : %s", this.timestamp.toString(), this.amount, this.memo);
+          }
+
+
+
+      }
+
+
+}       

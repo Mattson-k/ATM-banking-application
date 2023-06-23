@@ -3,6 +3,8 @@ import java.util.Random;
 
 public class Bank {
 
+
+
     private String name;
 
     private ArrayList<User> users;
@@ -133,6 +135,22 @@ public class Bank {
 
     public void addAccount(Account newAccount) {
 
+
+
+
+
+
+
+
+
+
     }
+
+
+    public String getName(){
+        return  this.name;
+    }; 
+
+
 
 }

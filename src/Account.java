@@ -25,25 +25,6 @@ public class Account {
        // initialise transactions
        this.transactions=new ArrayList<Transaction>();
 
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
    }
@@ -53,4 +34,56 @@ public class Account {
        return  this.uuid;
     }
 
+    /**
+     * get summary line for the account
+     * @return
+     */
+    public String getSummaryLine(){
+         //get balance of account
+           double balance=this.getBalance();
+           //format summary line depending if balance is negative
+
+           if(balance >= 0){
+               return String.format("%s : shs%.02f : %s", this.uuid, balance,this.name);
+
+
+           } else {
+
+
+               return String.format("%s : shs(%.02f) : %s", this.uuid, balance,this.name);
+
+           }
+
+
+
+
+       }
+
+       public double getBalance(){
+        double balance =0;
+        for (Transaction t : this.transactions){
+            balance += t.getAmount();
+        }
+        return balance;
+
+       }
+
+    /**
+     *    print transaction history of the account
+     */
+
+    public void printTransHistory(){
+         System.out.printf("\n Transaction history for account %s\n", this.uuid   );
+        for(int t=this.transactions.size()-1; t>=0;t--)  //start with last index in the transaction and keep looping while t is greater and equal too 0 and keep reducing
+        {
+           System.out.printf(this.transactions.get(t).getSummaryLine());
+
+        }
+        System.out.println();
+
+      }
+
+
 }
+
+
