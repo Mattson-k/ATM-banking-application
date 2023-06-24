@@ -60,7 +60,7 @@ public class Atm {
            System.out.print("Enter pin: ");
            pin =sc.nextLine();
 
-           //  tyr to get user object corresponding to id and pin combo
+           //  try to get user object corresponding to id and pin combo
            
               authUser= theBank.userLogin(userID,pin);
               if(authUser==null){
@@ -78,7 +78,12 @@ public class Atm {
 
 
     }
-    
+
+    /**
+     *
+     * @param theUser    display user menu and make prompts
+     * @param sc
+     */
     public static void printUserMenu(User theUser, Scanner sc){
      //print a summary of the users accounts
         theUser.printAccountsSummary();
@@ -131,7 +136,7 @@ public class Atm {
 
     /**
      * show the transaction history for an account
-     * @param theUser  the logged in user object
+     * @param theUser  the logged-in user object
      *                 
      * @param sc       the scanner object used for the user
      */
@@ -158,7 +163,46 @@ public class Atm {
 
 
 
+public  static void transferFunds(User theUser, Scanner sc){
 
+  //inits
+
+  int fromAcct;
+   int toAcct;
+   double amount;
+   double acctBal;
+
+   // get the account to transfer from
+    do {
+        System.out.printf("Enter the number (1-%d) of the account \n" + "to transfer from: ");
+             fromAcct= sc.nextInt()-1;
+             if()
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }   while ();
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 
