@@ -36,12 +36,12 @@ public class Account {
 
     /**
      * get summary line for the account
-     * @return
+     * @return    summary for account
      */
     public String getSummaryLine(){
          //get balance of account
            double balance=this.getBalance();
-           //format summary line depending if balance is negative
+           //format summary line depending on if balance is negative
 
            if(balance >= 0){
                return String.format("%s : shs%.02f : %s", this.uuid, balance,this.name);
@@ -53,8 +53,6 @@ public class Account {
                return String.format("%s : shs(%.02f) : %s", this.uuid, balance,this.name);
 
            }
-
-
 
 
        }
@@ -74,7 +72,7 @@ public class Account {
 
     public void printTransHistory(){
          System.out.printf("\n Transaction history for account %s\n", this.uuid   );
-        for(int t=this.transactions.size()-1; t>=0;t--)  //start with last index in the transaction and keep looping while t is greater and equal too 0 and keep reducing
+        for(int t=this.transactions.size()-1; t>=0;t--)  //start with last index in the transaction and keep looping while t is greater and equal to ZERO and keep reducing
         {
            System.out.printf(this.transactions.get(t).getSummaryLine());
 

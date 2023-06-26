@@ -37,7 +37,7 @@ private ArrayList<Account> accounts; //list of accounts for this user
     this.accounts=new ArrayList<Account>();
 
     // print log message
-    System.out.printf("New user %s, %s with ID %s created. \n", LastName,FirstName,this.uuid);
+    System.out.printf(" User %s, %s with ID %s created. \n", LastName,FirstName,this.uuid);
 
 
 
@@ -78,7 +78,7 @@ private ArrayList<Account> accounts; //list of accounts for this user
    */
 
   public  void printAccountsSummary () {
-        System.out.printf("\n\n%s's accounts summary", this.FirstName);
+        System.out.printf("\n\n%s's accounts summary\n", this.FirstName);
          for (int a=0;a< this.accounts.size();a++){
            System.out.printf("%d) %s\n",a+1,this.accounts.get(a).getSummaryLine());
 

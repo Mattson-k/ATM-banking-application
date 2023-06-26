@@ -14,10 +14,10 @@ public class Atm {
          Bank theBank =new Bank("CentenaryBank") ;
 
          // add user to bank which also creates a savings account
-        User aUser = theBank.addUser("Kigonya","Timothy","1234");
+        User aUser = theBank.addUser("Kigonya","Timothy","5417");
 
-        // add a checking account for our user
-        Account newAccount =new Account("Checking",aUser,theBank);
+        // add a fixed deposit account for our user
+        Account newAccount =new Account("Fixed Deposit Account",aUser,theBank);
             aUser.addAccount(newAccount);
             theBank.addAccount (newAccount);
 
@@ -25,16 +25,12 @@ public class Atm {
             while (true){
                 //stay in login prompt till its succesful
                  curUser =Atm.mainMenuPrompt(theBank, sc);
-
+                 //stay in main menu till user quits
                  Atm.printUserMenu(curUser, sc);
 
-
+              
 
             }
-
-
-
-
 
 
 
@@ -47,14 +43,14 @@ public class Atm {
      * @return
      */
     public static User mainMenuPrompt(Bank theBank, Scanner sc ) {
-
+            //inits
         String userID;
         String pin;
         User authUser;
-        //prompt user for id/pin combo till correct one is reached
+        //prompt user for user id  and pin combo till correct one is reached
 
       do {
-          System.out.printf("welcome to %s" ,theBank.getName());
+          System.out.printf("\n\n welcome to %s\n\n" ,theBank.getName());
            System.out.print("Enter user ID:");
            userID=sc.nextLine();
            System.out.print("Enter pin: ");
@@ -66,11 +62,7 @@ public class Atm {
               if(authUser==null){
                 System.out.println("incorrect id/pin combination." +"please try again ");
 
-
               }
-
-
-
 
       }   while (authUser==null);  //continue looping till succesful login
 
@@ -90,13 +82,13 @@ public class Atm {
         // initialise
         int choice;
         do {
-            System.out.printf("welcome %s, what would you like to do");
+            System.out.print("welcome %s what would you like to do?\n");
             theUser.getFirstName();
-            System.out.println("  1) show account transaction history");
-            System.out.println("  2) withdrwaw");
-            System.out.println("  3)  deposit");
-            System.out.println("  4) transfer");
-            System.out.println("  5) quit");
+            System.out.println("  1) Show account transaction history");
+            System.out.println("  2) Withdraw");
+            System.out.println("  3) Deposit");
+            System.out.println("  4) Transfer");
+            System.out.println("  5) Quit");
             System.out.println();
             System.out.println("ENTER CHOICE") ;
             choice= sc.nextInt();
@@ -190,7 +182,7 @@ public  static void transferFunds(User theUser, Scanner sc){
             //get account to transfer to
 
     do {
-        System.out.printf("Enter the number (1-%d) of the account \n" + "to transfer to: ");
+        System.out.printf("Enter the number (1-%d) of the account \n" + "to transfer to: ", theUser.numAccounts());
         toAcct= sc.nextInt()-1;
         if(toAcct< 0 || toAcct >=theUser.numAccounts());{
             System.out.println("invalid account. please try again. ");
@@ -223,10 +215,6 @@ public  static void transferFunds(User theUser, Scanner sc){
 
 
 
-
-
-
-
 }
 
 
@@ -247,7 +235,7 @@ public static void withdrawFunds(User theUser ,Scanner sc){
 
      // get the account to transfer from
      do {
-         System.out.printf("Enter the number (1-%d) of the account \n" + "to transfer from: ");
+         System.out.printf("Enter the number (1-%d) of the account \n" + "to withdraw from: ", theUser.numAccounts());
          fromAcct= sc.nextInt()-1;
          if(fromAcct< 0 || fromAcct >=theUser.numAccounts());{
              System.out.println("invalid account. please try again. ");
@@ -285,14 +273,6 @@ public static void withdrawFunds(User theUser ,Scanner sc){
 
 
 
-
-
-
-
-
-
-
-
  }
 
     /**
@@ -314,7 +294,7 @@ public static void withdrawFunds(User theUser ,Scanner sc){
 
        // get the account to transfer from
        do {
-           System.out.printf("Enter the number (1-%d) of the account \n" + "to transfer from: ");
+           System.out.printf("Enter the number (1-%d) of the account\n" + "to deposit in: ",theUser.numAccounts());
            toAcct= sc.nextInt()-1;
            if(toAcct< 0 ||toAcct >=theUser.numAccounts());{
                System.out.println("invalid account. please try again. ");
