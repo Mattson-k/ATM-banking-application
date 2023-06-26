@@ -49,13 +49,13 @@ public class Transaction {
 
       public String getSummaryLine() {
           if (this.amount >= 0) {
-              return String.format("%s : shs%.0f : %s", this.timestamp.toString(), this.amount, this.memo);
+              return String.format("%s : shs%.02f : %s", this.timestamp.toString(), this.amount, this.memo);
 
 
           }
 
           else {
-              return String.format("%s : shs(%.0f) : %s", this.timestamp.toString(), this.amount, this.memo);
+              return String.format("%s : shs(%.02f) : %s", this.timestamp.toString(), this.amount, this.memo);
           }
 
 

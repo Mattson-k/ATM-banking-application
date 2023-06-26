@@ -96,4 +96,42 @@ private ArrayList<Account> accounts; //list of accounts for this user
     
   }
 
+  /**
+   *    get the account balance of a particular account
+   * @param acctIdx     the index of account to use
+   * @return    account balance
+   */
+  public double getAcctBalance(int acctIdx){
+    return this.accounts.get(acctIdx).getBalance();
+
+
+  }
+
+  /**
+   *  get uuid of  a particular account
+   * @param acctIdx   the index of the account to use
+   *
+   * @return  the uuid of the account
+   */
+  public String getAcctUUID(int acctIdx){
+    return this.accounts.get(acctIdx).getUUID();
+
+
+  }
+
+  /**
+   * add a transaction to aparticular account
+   * @param acctIdx  the index of the account
+   * @param amount  the amount of the transaction
+   *
+   * @param memo    memo of transaction
+   */
+  public void addAcctTransaction(int acctIdx,double amount,String memo){
+       this.accounts.get(acctIdx).addTransaction(amount,memo);
+       
+
+  }
+
+
 }
+
