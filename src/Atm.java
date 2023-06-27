@@ -37,7 +37,7 @@ public class Atm {
         }
 
     /**
-     * 
+     *        initialise the main menu prompt
      * @param theBank
      * @param sc
      * @return
@@ -83,13 +83,12 @@ public class Atm {
         int choice;
         do {
             System.out.print("welcome %s what would you like to do?\n");
-            theUser.getFirstName();
+              theUser.getFirstName();
             System.out.println("  1) Show account transaction history");
             System.out.println("  2) Withdraw");
             System.out.println("  3) Deposit");
             System.out.println("  4) Transfer");
             System.out.println("  5) Quit");
-            System.out.println();
             System.out.println("ENTER CHOICE") ;
             choice= sc.nextInt();
 
@@ -129,7 +128,6 @@ public class Atm {
     /**
      * show the transaction history for an account
      * @param theUser  the logged-in user object
-     *                 
      * @param sc       the scanner object used for the user
      */
 
@@ -155,7 +153,6 @@ public class Atm {
     /**
      *      process transferring funds from one account to another
      * @param theUser the logged-in user object
-     *
      * @param sc the scanner object used for user input
      */
 
@@ -260,11 +257,11 @@ public static void withdrawFunds(User theUser ,Scanner sc){
      }   while(amount<=0|| amount>acctBal);
 
 
-      //gobble uup the rest of the previous input
+      //gobble up the rest of the previous input
       sc.nextInt();
 
       //get a memo
-     System.out.println("Enter a memo:  ");
+     System.out.print("Enter a memo:  ");
      memo=sc.nextLine();
 
      // do the withdrawal
@@ -276,7 +273,7 @@ public static void withdrawFunds(User theUser ,Scanner sc){
  }
 
     /**
-     * process a fund deposit to an caccount
+     * process a fund deposit to an account
      * @param theUser the logged-in user object
      * @param sc the scanner object used for the user input
      */
@@ -287,16 +284,17 @@ public static void withdrawFunds(User theUser ,Scanner sc){
    public static void depositFunds(User theUser,Scanner sc){
 
        //inits
-       String memo;
        int toAcct;
        double amount;
        double acctBal;
+       String memo;
+               
 
-       // get the account to transfer from
+       // get the account to transfer to
        do {
            System.out.printf("Enter the number (1-%d) of the account\n" + "to deposit in: ",theUser.numAccounts());
            toAcct= sc.nextInt()-1;
-           if(toAcct< 0 ||toAcct >=theUser.numAccounts());{
+           if(toAcct< 0 || toAcct >=theUser.numAccounts());{
                System.out.println("invalid account. please try again. ");
            }
 
@@ -306,24 +304,21 @@ public static void withdrawFunds(User theUser ,Scanner sc){
 
        //get the amount to transfer
        do {
-           System.out.printf("Enter the amount to transfer (max shs%.02f): shs",acctBal );
+           System.out.printf("Enter the amount to transfer (min shs%.02f): shs",acctBal );
            amount=sc.nextDouble();
            if (amount<0){
                System.out.println("amount must be greater than zero,");
 
-           } else if (amount>acctBal) {System.out.printf("amount must not be greater than\n" + "balance of shs%.02f.\n",acctBal);
-
            }
 
-
-       }   while(amount<=0|| amount>acctBal);
+       }   while(amount<0);
 
 
        //guzzle up the rest of the previous input
        sc.nextInt();
 
        //get a memo
-       System.out.println("Enter a memo:  ");
+       System.out.print("Enter a memo:  ");
        memo=sc.nextLine();
 
        // do the deposit
