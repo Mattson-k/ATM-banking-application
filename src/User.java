@@ -3,14 +3,22 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 public class User{
-private String FirstName;  //first name of user
-private String LastName;   // last name of user
-private String uuid;  //the i.d of the user   universal unique identifier
 
-private byte pinHash[];  // the md5 hash of the users pin-number
+  private final String FirstName;  //first name of user
+private final String LastName;   // last name of user
+private final String uuid;  //the i.d of the user   universal unique identifier
 
-private ArrayList<Account> accounts; //list of accounts for this user
+private byte[] pinHash;  // the md5 hash of the users pin-number
 
+private final ArrayList<Account> accounts; //list of accounts for this user
+
+  /**
+   *
+   * @param FirstName  the users first name
+   * @param LastName   the users last name
+   * @param pin        the users pin-number for the account
+   * @param theBank     the bank object that the user is a customer of
+   */
 
   // constructor for user
   public User(String FirstName, String LastName, String pin, Bank theBank){
@@ -19,36 +27,42 @@ private ArrayList<Account> accounts; //list of accounts for this user
     this.FirstName=FirstName;
     this.LastName=LastName;
 
-    // store the pin md5 hash but not exact value for security reasons
+    // store the pin  using the md5 hash but not exact value for security reasons  we will use the message digest class
 
     try {
       MessageDigest md =MessageDigest.getInstance("md5");
-      this.pinHash= md.digest(pin.getBytes());
+      this.pinHash= md.digest(pin.getBytes()); // this will get the byte data adn digest it and return a different  array of bytes to store in pin hash
     } catch (NoSuchAlgorithmException e) {
-      System.err.println("error caught no such algorithm exception");
+      System.err.println("error caught no such algorithm exception");   // print out an error
       e.printStackTrace();
       System.exit(1);
     }
 
     //get uuid unique universal i.d for the user
-    this.uuid=theBank.getNewUserUUID();
+    this.uuid=theBank.getNewUserUUID();       // we write the method in bank to do that
 
 // create empty lists of accounts
     this.accounts=new ArrayList<Account>();
 
-    // print log message
-    System.out.printf(" User %s, %s with ID %s created. \n", LastName,FirstName,this.uuid);
+    // print log message  to know our uuid
+    System.out.printf(" Our Highly Esteemed Customer %s, %s with ID %s created. \n", LastName,FirstName,this.uuid);
 
 
 
     }
 
-  public void addAccount(Account anAcct) {
+  /**
+   *   add an account for the user!!
+   * @param anAcct  the account to add
+   */
+  public void addAccount(Account anAcct)
+  {
     this.accounts.add(anAcct);
   }
 
      //return user uuid
-  public String getUUID() {
+  public String getUUID()
+  {                                               
     return this.uuid;
   }
 
@@ -120,7 +134,7 @@ private ArrayList<Account> accounts; //list of accounts for this user
   }
 
   /**
-   * add a transaction to aparticular account
+   * add a transaction to a particular account
    * @param acctIdx  the index of the account
    * @param amount  the amount of the transaction
    *

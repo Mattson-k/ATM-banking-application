@@ -1,19 +1,20 @@
 import java.util.Date;
 
 public class Transaction {
-    private double amount;   // amount with  transaction
+    private final double amount;   // amount with  transaction
 
-    private Date timestamp;  //date of transaction
+    private final Date timestamp;  //date of transaction
 
     private String memo;       // memo for this transaction
 
-    private  Account inAccount;  //account in which its performed
+    private final Account inAccount;  //account in which its performed
 
 
-
-    // create a new transaction
-    //amount transacted
-    //the account the transaction belongs to
+    /**
+     *          // create a new transaction
+     * @param amount  //amount transacted
+     * @param inAccount  //the account the transaction belongs to
+     */
     public Transaction(double amount, Account inAccount){
         this.amount=amount;
         this.inAccount =inAccount;
@@ -28,9 +29,6 @@ public class Transaction {
          this(amount, inAccount);
          //set memo
          this.memo =memo;
-
-
-
 
      }
 
@@ -55,7 +53,7 @@ public class Transaction {
           }
 
           else {
-              return String.format("%s : shs(%.02f) : %s", this.timestamp.toString(), this.amount, this.memo);
+              return String.format("%s : shs(%.02f) : %s", this.timestamp.toString(), -this.amount, this.memo);
           }
 
 

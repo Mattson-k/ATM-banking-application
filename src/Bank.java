@@ -1,15 +1,15 @@
-import java.util.ArrayList;
+ import java.util.ArrayList;
 import java.util.Random;
 
 public class Bank {
 
 
 
-    private String name;
+    private final String name;   //name of the bank
 
-    private ArrayList<User> users;
+    private final ArrayList<User> users; // each element in the array list will be of type user
 
-    private ArrayList<Account> accounts;
+    private final ArrayList<Account> accounts;
 
     /**
      * create new bank object   with empty lists of users and accounts
@@ -36,7 +36,7 @@ public class Bank {
         do {
          uuid="";
          for (int c=0;c<len;c++){
-             uuid+=((Integer)rng.nextInt(10)).toString();
+             uuid+=((Integer)rng.nextInt(10)).toString();  //generate an integer between zero and ten exclusive
          }
                //check to make sure its unique
             nonUnique=false;
@@ -55,12 +55,12 @@ public class Bank {
     }
 
          public  String getNewAccountUUID() {
-             // generate a new uuid for a user
+             // generate a new uuid for a user   and check if it does not already exist
              String uuid;
              Random rng =new Random();  //generate a code
              int len =10;   //length set to 10
              boolean nonUnique;
-             //continue looping till we get a unique i.d
+             //continue looping till we get a unique i.d    so keep generating a new one if its  not unique
 
              do {
                  uuid="";
@@ -86,10 +86,15 @@ public class Bank {
          }
 
 
+    /**
+     *    add an account
+     * @param anAcct    the account to  add here
+     */
+    public void addAccount(Account anAcct) {
+        this.accounts.add(anAcct);
 
 
-
-
+    }
     /**
      *
       * @param FirstName of user
@@ -116,6 +121,17 @@ public class Bank {
 
     }
 
+
+    /**
+     * the user login credentials
+     * @param userID          user i.d credentials
+     * @param pin        pin of customer
+     * @return
+     */
+
+
+
+
     public User userLogin(String userID,String pin){
         // search through list of users
 
@@ -128,21 +144,17 @@ public class Bank {
 
         }
 
-     // if we have not found the user   or have incorrect pin
+     // if we have not found the user   or an have incorrect pin
         return null;
     }
 
 
-    public void addAccount(Account newAccount) {
 
-
-    }
 
 
     public String getName(){
         return  this.name;
-    }; 
-
+    }
 
 
 }
